@@ -31,6 +31,8 @@ def hello() -> str:
     # https://cloud.google.com/run/docs/logging#correlate-logs
     logger.info("Child logger with trace Id.")
 
+    print('is this working?')
+
     return "Hello, World!"
 
 
