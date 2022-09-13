@@ -19,6 +19,7 @@ from types import FrameType
 from flask import Flask
 
 from utils.logging import logger
+import random
 
 app = Flask(__name__)
 
@@ -31,9 +32,7 @@ def hello() -> str:
     # https://cloud.google.com/run/docs/logging#correlate-logs
     logger.info("Child logger with trace Id.")
 
-    print('is this working?')
-
-    return "Hello, World!"
+    return str(random.random())
 
 
 def shutdown_handler(signal_int: int, frame: FrameType) -> None:
