@@ -21,6 +21,19 @@ from flask import Flask
 from utils.logging import logger
 import random
 
+import os
+
+os.environ['KILOSORT3_PATH'] = os.path.join('C:\\', 'github', 'Kilosort')
+import matplotlib.pyplot as plt
+import spikeinterface.full as si
+import spikeinterface.extractors as se
+import spikeinterface.sorters as ss
+import spikeinterface.comparison as sc
+import spikeinterface.widgets as sw
+from shutil import rmtree
+import time
+
+
 app = Flask(__name__)
 
 
@@ -31,6 +44,7 @@ def hello() -> str:
 
     # https://cloud.google.com/run/docs/logging#correlate-logs
     logger.info("Child logger with trace Id.")
+    local_path = si.download_dataset(remote_path='mearec/mearec_test_10s.h5')
 
     return str(random.random())
 
